@@ -9,6 +9,10 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
 import { useStateValue } from '../context/StateProvider'
 import { actionType } from '../context/reducer'
 const Header = () => {
+  // const obj = {foo: 1};
+  // obj.bar = 2
+  // console.log(obj)
+
   const [{ user }, dispatch] = useStateValue()
   const [isMenu, setIsMenu] = useState(false)
   const firebaseAuth = getAuth(app)
@@ -34,7 +38,7 @@ const Header = () => {
     })
   }
   return (
-    <header className='w-screen fixed z-50 p-3 px-4 md:p-6 md:px-16'>
+    <header className='w-screen fixed z-50 p-3 px-4 md:p-6 md:px-16 bg-primary'>
       {/* desktop & tablet */}
       <div className='hidden md:flex w-full h-full items-center justify-between'>
         <Link to={'/'} className='flex items-center gap-2'>
@@ -75,6 +79,13 @@ const Header = () => {
 
       {/* mobile */}
       <div className='flex items-center justify-between md:hidden w-full h-full'>
+
+        <div className='relative flex items-center'>
+          <MdShoppingBasket className='text-textColor text-2xl cursor-pointer' />
+          <div className='absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumbg flex items-center justify-center'>
+            <p className='text-xs text-white font-semibold'>2</p>
+          </div>
+        </div>
         <Link to={'/'} className='flex items-center gap-2'>
           <img src={Logo} className="w-10 object-cover" alt="logo" />
           <p className='text-headingColor text-xl font-bold'>City</p>
