@@ -1,6 +1,7 @@
 export const actionType = {
     SET_USER: 'SET_USER',
-    SET_FOOD_ITEMS: 'SET_FOOD_ITEMS'
+    SET_FOOD_ITEMS: 'SET_FOOD_ITEMS',
+    SET_IS_ON: 'SET_IS_ON'
 }
 
 const reducer = (state, action) => {
@@ -16,6 +17,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 foodItems: action.foodItems,
+            }
+        case actionType.SET_IS_ON:
+            return {
+                ...state,
+                isOn: action.isOn,
             }
         default:
             return state
