@@ -49,10 +49,11 @@ module.exports = {
       colors:{
         headingColor:"#2e2e2e",
         textColor:"#515151",
-        cartNumbg:"#e80013",
+        cartNumbg:"#53B079",
         primary:"#f5f3f3",
         cardOverlay: 'rgba(256,256,256,0.4)',
         lighttextGray:"#9ca0ab",
+        card: 'rgba(256,256,256,0.8)',
       }
     },
   },

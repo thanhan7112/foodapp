@@ -12,7 +12,7 @@ const RowContainer = ({ flag, data, scrollValue }) => {
                 <div key={item.id} className='w-275 h-[175px] min-w-[275px] md:min-w-[300px] bg-cardOverlay rounded-lg py-2 px-4 md:w-300 my-12 backdrop-blur-lg hover:drop-shadow-lg flex flex-col items-center justify-evenly relative'>
                     <div className='w-full flex items-center justify-between'>
                         <motion.img whileHover={{ scale: 1.2 }} src={item.imageURL} className="w-40 h-full -mt-8 drop-shadow-2xl" />
-                        <motion.div whileTap={{ scale: 0.75 }} className='w-8 h-8 rounded-full bg-red-600 flex items-center justify-center cursor-pointer hover:shadow-md'>
+                        <motion.div whileTap={{ scale: 0.75 }} className='w-8 h-8 rounded-full bg-cartNumbg flex items-center justify-center cursor-pointer hover:shadow-md'>
                             <MdShoppingBasket className='text-white' />
                         </motion.div>
                     </div>

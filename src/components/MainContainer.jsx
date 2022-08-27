@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 import RowContainer from './RowContainer'
 import {useStateValue} from '../context/StateProvider'
+import MenuContainer from './MenuContainer'
 const MainContainer = () => {
   const [{foodItems}, dispatch] = useStateValue()
   const LenghtItems = foodItems?.length
@@ -19,7 +20,7 @@ const MainContainer = () => {
         <div className='w-full flex items-center justify-between'>
           <p className='text-2xl font-semibold uppercase relative text-headingColor before:absolute before:rounded-lg before:content before:w-32 before:h-1 before:-bottom-2 before:left-0 before:bg-gradient-to-tr from-orange-400 to-orange-600 transition-all ease-in-out duration-100'>Our fresh & healthy fruits</p>
           <div className='hidden md:flex gap-3 items-center'>
-            <motion.div onClick={() => setScrollValue(scrollValue-285)} whileTap={{ scale: 0.75 }} className={`w-8 h-8 rounded-lg bg-orange-300 hover:bg-orange-500 cursor-pointer transition-all duration-100 ease-in-out hover:shadow-lg ${scrollValue === 0 ? 'hidden' : 'flex'} items-center justify-center`}>
+            <motion.div onClick={() => setScrollValue(scrollValue-285)} whileTap={{ scale: 0.75 }} className={`w-8 h-8 rounded-lg bg-orange-300 hover:bg-orange-500 cursor-pointer hover:shadow-lg ${scrollValue === 0 ? 'hidden' : 'flex'} items-center justify-center`}>
               <MdChevronLeft className='text-lg text-white' />
             </motion.div>
             <motion.div  onClick={() => setScrollValue(scrollValue+285)} whileTap={{ scale: 0.75 }} className={`w-8 h-8 rounded-lg bg-orange-300 hover:bg-orange-500 cursor-pointer transition-all duration-100 ease-in-out hover:shadow-lg ${scrollValue >= scrollLength ? 'hidden' : 'flex'} items-center justify-center`}>
@@ -29,9 +30,7 @@ const MainContainer = () => {
         </div>
         <RowContainer scrollValue={scrollValue} flag={true} data={foodItems?.filter(n => n.category === "fruits")}/>
       </section>
-      <section className='w-full my-6'>
-        
-      </section>
+      <MenuContainer/>
     </div>
   )
 }
