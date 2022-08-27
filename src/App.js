@@ -9,8 +9,7 @@ import { useStateValue } from './context/StateProvider'
 import { getAllFoodItems } from './utils/firebaseFunctions'
 import { actionType } from './context/reducer'
 const App = () => {
-  const [{foodItems}, dispatch] = useStateValue()
-  // const isOn = useStateValue(isOn)
+  const [{foodItems, isOn}, dispatch] = useStateValue()
   const fetchData = async () => {
     await getAllFoodItems().then(data => {
       dispatch({
@@ -21,12 +20,10 @@ const App = () => {
   }
   useEffect (() => {
     fetchData()
-  },[])
-  // console.log(isOn)
+  },[isOn])
   return (
     <AnimatePresence exitBeforeEnter>
-      {/* <div className={`w-screen h-auto flex flex-col ${isOn === true ? 'bg-primary' : 'bg-black'}`}> */}
-      <div className={`w-screen h-auto flex flex-col bg-primary`}>
+      <div className={`w-screen h-auto flex flex-col ${isOn === true ? 'bg-primary' : 'bg-fIsOn'}`}>
         <Header />
         <main className='mt-14 md:mt-20 px-4 md:px-16 py-4 w-full'>
           <Routes>
