@@ -4,10 +4,10 @@ import { Route, Routes } from 'react-router-dom'
 import MainContainer from './components/MainContainer'
 import CreateContainer from './components/CreateContainer'
 import { AnimatePresence } from 'framer-motion'
-import Abc from './components/Abc'
 import { useStateValue } from './context/StateProvider'
 import { getAllFoodItems } from './utils/firebaseFunctions'
 import { actionType } from './context/reducer'
+import MenuContainer from './components/MenuContainer'
 const App = () => {
   const [{foodItems, isOn}, dispatch] = useStateValue()
   const fetchData = async () => {
@@ -29,6 +29,7 @@ const App = () => {
           <Routes>
             <Route path='/' element={<MainContainer />} />
             <Route path='/createItem' element={<CreateContainer />} />
+            <Route path='/Menu' element={<MenuContainer />} />
           </Routes>
         </main>
       </div>

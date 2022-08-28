@@ -8,11 +8,13 @@ import { storage } from '../firebase.config'
 import { getAllFoodItems, saveItem } from '../utils/firebaseFunctions'
 import { useStateValue } from '../context/StateProvider'
 import { actionType } from '../context/reducer'
+import { meridiem } from '../utils/data'
 const CreateContainer = () => {
   const [title, setTitle] = useState("")
   const [calories, setCalories] = useState("")
   const [price, setPrice] = useState("")
   const [category, setCategory] = useState(null)
+  const [Meridiem, setMeridiem] = useState(null)
   const [imageAsset, setImageAsset] = useState(null)
   const [fields, setFields] = useState(false)
   const [alertStatus, setAlertStatus] = useState("danger")
@@ -78,10 +80,11 @@ const CreateContainer = () => {
         const data = {
           id: `${Date.now()}`,
           title: title,
+          meridiem: Meridiem,
           imageURL: imageAsset,
           category: category,
           calories: calories,
-          qty: 1,
+          qty: 0,
           price: price
         }
         saveItem(data)
@@ -140,6 +143,14 @@ const CreateContainer = () => {
           <select onChange={(e) => setCategory(e.target.value)} className="outline-none w-full text-base border-b-2 border-gray-200 rounded-md cursor-pointer">
             <option value="other" className="bg-white">Select Category</option>
             {categories && categories.map((item) => (
+              <option key={item.id} className="text-base border-0 outline-none capitalize bg-white text-headingColor" value={item.urlParamName}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+          <select onChange={(e) => setMeridiem(e.target.value)} className="outline-none mt-2 w-full text-base border-b-2 border-gray-200 rounded-md cursor-pointer">
+            <option value="other" className="bg-white">Select Meridiem</option>
+            {meridiem && meridiem.map((item) => (
               <option key={item.id} className="text-base border-0 outline-none capitalize bg-white text-headingColor" value={item.urlParamName}>
                 {item.name}
               </option>
